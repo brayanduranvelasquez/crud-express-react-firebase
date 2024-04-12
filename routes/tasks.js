@@ -1,7 +1,8 @@
 const removeUndefinedFields = require('../utils/removeUndefinedFields');
-const { db } = require('../firebase');
+const { getFirestore } = require('firebase-admin/firestore');
 const app = require('express');
 const router = app.Router();
+const db = getFirestore();
 
 // get all
 router.get('/', async (req, res) => {

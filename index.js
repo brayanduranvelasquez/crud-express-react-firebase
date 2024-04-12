@@ -1,10 +1,18 @@
+const { initializeApp, cert } = require('firebase-admin/app');
 const express = require('express');
 const cors = require('cors');
 const app = express();
+
 require('dotenv').config();
 
 app.use(cors());
 app.use(express.json());
+
+const serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT_KEY);
+
+initializeApp({
+  credential: cert(serviceAccount),
+});
 
 // Routes
 const routes = require('./routes');
